@@ -32,3 +32,9 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
+
+RESOURCES += \
+    rsc.qrc
+
+DISTFILES += \
+    Resources/morse.jpeg

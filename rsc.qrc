@@ -1,2 +1,12 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/morse.jpeg</file>
+        <file>Resources/aurora.jpeg</file>
+        <file>Resources/colors.jpeg</file>
+        <file>Resources/view.jpeg</file>
+        <file>Resources/background1.jpeg</file>
+        <file>Resources/background2.jpeg</file>
+        <file>Resources/background3.jpeg</file>
+        <file>Resources/background4.jpeg</file>
+    </qresource>
+</RCC>
