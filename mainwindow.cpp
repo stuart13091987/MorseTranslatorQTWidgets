@@ -64,6 +64,7 @@ void MainWindow::on_pushButton_2_clicked()
 
 }
 
+//Open File
 void MainWindow::on_OpenButton_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open Text"), "/home/", tr("Text Files (*.txt )"));
@@ -73,31 +74,23 @@ void MainWindow::on_OpenButton_clicked()
     else
     {
         QFile file(fileName);
-        if (!file.open(QIODevice::WriteOnly))
+        if (!file.open(QIODevice::ReadOnly))
         {
             QMessageBox::information(this, tr("Unable to open file"),
                 file.errorString());
             return;
         }
-
-        QString line;
-        ui->textEdit->clear();
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+        else
         {
-            QTextStream stream(&file);
-            while (!stream.atEnd()){
-                line = stream.readLine();
-                ui->textEdit->setText(ui->textEdit->toPlainText()+line+"\n");
-            }
+            QTextStream in(&file);
+            QString fileInput = in.readAll();
+            ui->textEdit->setText(fileInput);
+            file.close();
         }
-    file.close();
-
-
     }
-
-
 }
 
+//Save File
 void MainWindow::on_SaveButton_clicked()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "/home/",
