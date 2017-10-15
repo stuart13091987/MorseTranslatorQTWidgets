@@ -16,7 +16,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
 
     void on_actionExit_triggered();
 
@@ -25,8 +24,6 @@ private slots:
     void on_actionSave_As_triggered();
 
     void on_TranslateButton_clicked();
-
-    void on_pushButton_2_clicked();
 
     void on_OpenButton_clicked();
 

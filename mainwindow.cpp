@@ -7,6 +7,7 @@
 #include "QFile"
 #include "QFileDialog"
 #include "QMessageBox"
+#include "mors.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,19 +21,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-
-}
 
 void MainWindow::on_actionExit_triggered()
 {
-
+    delete ui;
 }
 
 void MainWindow::on_actionAbout_triggered()
 {
-    delete ui;
+
 }
 
 void MainWindow::on_actionSave_As_triggered()
@@ -42,13 +39,15 @@ void MainWindow::on_actionSave_As_triggered()
 
 void MainWindow::on_TranslateButton_clicked()
 {
-
     QString input = ui->textEdit->toPlainText();
     qDebug() << input;
 
     //translate
 
-    ui->textEdit_2->setText(input);
+    QString output;
+    Mors *trans = new Mors();
+    output = trans->translate(input);
+
 //    About a = new About(QMainWindow);
 //    a.show();
 
@@ -56,11 +55,8 @@ void MainWindow::on_TranslateButton_clicked()
 //    DaneT dane;
 //    DaneT::iterator i = dane.begin();
 //    printf("%d", i);
-}
 
-//Save
-void MainWindow::on_pushButton_2_clicked()
-{
+    ui->textEdit_2->setText(output);
 
 }
 

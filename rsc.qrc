@@ -8,5 +8,6 @@
         <file>Resources/background2.jpeg</file>
         <file>Resources/background3.jpeg</file>
         <file>Resources/background4.jpeg</file>
+        <file>Resources/Morse.wav</file>
     </qresource>
 </RCC>
