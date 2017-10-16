@@ -54,15 +54,12 @@ QString Mors::translateToText(QString &input)
 
    //double space split into single words
    QStringList singleWords = input.split("  ", QString::SkipEmptyParts);
-
    QStringList strings;
-   QString output;
 
    //iterate through singleWords
    foreach (auto &string, singleWords)
    {
      strings = string.split(" ", QString::SkipEmptyParts);
-     //strings = string.split(" ", QString::SkipEmptyParts);
 
      for (auto i = strings.begin(); i!= strings.end(); ++i)
      {

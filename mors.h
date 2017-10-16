@@ -15,7 +15,6 @@ public:
 private:
     //QHash faster than QMap if there are more than 20 elements
     QHash <QChar, QString> charHash;
-    QHash <QString, QChar> morseHash;
     QString output;
 };
 
