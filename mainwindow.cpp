@@ -37,27 +37,25 @@ void MainWindow::on_actionSave_As_triggered()
 
 }
 
+//Translate
 void MainWindow::on_TranslateButton_clicked()
 {
     QString input = ui->textEdit->toPlainText();
     qDebug() << input;
 
-    //translate
-
     QString output;
     Mors *trans = new Mors();
-    output = trans->translate(input);
 
-//    About a = new About(QMainWindow);
-//    a.show();
-
-//    typedef std::vector <int> DaneT;
-//    DaneT dane;
-//    DaneT::iterator i = dane.begin();
-//    printf("%d", i);
+    if(ui->comboBox->currentIndex()==0)
+    {
+        output = trans->translateToMorse(input);
+    }
+    else if(ui->comboBox->currentIndex()==1)
+    {
+        output = trans->translateToText(input);
+    }
 
     ui->textEdit_2->setText(output);
-
 }
 
 //Open File

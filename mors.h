@@ -9,7 +9,8 @@ class Mors
 {
 public:
     Mors();
-    QString translate(QString &input);
+    QString translateToMorse(QString &input);
+    QString translateToText(QString &input);
 
 private:
     //QHash faster than QMap if there are more than 20 elements

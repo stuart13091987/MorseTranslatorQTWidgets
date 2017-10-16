@@ -44,27 +44,56 @@ Mors::Mors()
     charHash[' '] = "/";
 }
 
-QString Mors::translate(QString &input)
+QString Mors::translateToText(QString &input)
 {
-    qDebug()<< input;
+   qDebug()<< input;
 
+   //remove all characters that are different than . - and space
+   input.remove(QRegExp("[^.\\^-\\]"));
+   qDebug()<< input;
+
+   //double space split into single words
+   QStringList singleWords = input.split("  ", QString::SkipEmptyParts);
+
+   QStringList strings;
+   QString output;
+
+   //iterate through singleWords
+   foreach (auto &string, singleWords)
+   {
+     strings = string.split(" ", QString::SkipEmptyParts);
+     //strings = string.split(" ", QString::SkipEmptyParts);
+
+     for (auto i = strings.begin(); i!= strings.end(); ++i)
+     {
+        qDebug()<<charHash.key(*i);
+        output.append(charHash.key(*i));
+     }
+
+     output.append(" ");
+   }
+
+   return output;
+}
+
+QString Mors::translateToMorse(QString &input)
+{
+    //qDebug()<< input;
+
+    //remove all chars which are not alphanumerical and spaces
     input.remove(QRegExp("[^a-zA-Z\\d\\s]"));
 
-    //input.remove(QRegExp(QString::fromUtf8("[-`~!@#$%^&*()_—+=|:;<>«»,.?/{}\'\"\\\[\\\]\\\\]")));
-
+    //make lower case
     input.toLower();
 
-    qDebug()<<input;
-
-    //QHash<QChar, QString>::const_iterator iterator;
     QString tmp;
 
     for(int i=0; i< input.size(); i++)
     {
-        qDebug()<<input[i];
+        //qDebug()<<input[i];
         tmp = charHash[input[i]];
         output.append(tmp);
     }
-    return output;
 
+    return output;
 }
